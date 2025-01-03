@@ -1,0 +1,30 @@
+services:
+  php:
+    container_name: ${CONTAINER_NAME:-franken-laravel}
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+      args:
+        USER: ${USER:-nadhif}
+    tty: true
+    restart: unless-stopped
+    ports:
+      - ${PORT:-8090}:${PORT:-8090}
+    environment:
+      - SERVER_NAME=":${PORT:-8090}"
+    env_file:
+      - ./.env
+    volumes:
+      - ${LARAVEL_PATH}:/app
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - frankenphp-network
+
+networks:
+  frankenphp-network:
+    driver: bridge
+
+volumes:
+  caddy_data:
+  caddy_config:
