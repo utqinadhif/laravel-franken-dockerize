@@ -26,7 +26,7 @@ This project provides a Docker Compose configuration for deploying a Laravel app
     ```
 
 4. Access the Laravel application:
-    - Open your browser and navigate to `http://localhost` with port that you define on environtment
+    - Open your browser and navigate to `http://localhost` with port that you define on environment
 
 ## Useful Commands
 
